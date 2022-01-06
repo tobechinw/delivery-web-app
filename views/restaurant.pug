@@ -1,0 +1,63 @@
+html 
+    head 
+        title #{restaurant.name}
+        
+
+        div 
+            a(href='http://localhost:3000/') Home Page 
+        div 
+            a(href='http://localhost:3000/restaurants') Restaurants
+        div 
+            a(href='http://localhost:3000/addrestaurant') Add a Restaurant
+        
+        body
+            div
+                p(id='restID') Restaurant ID: #{restaurant.id}
+                p Name of Restaurant:     
+                    input#restaurantName(type='textbox' value=restaurant.name)
+                p Delivery Fee: $ 
+                    input#deliveryFee(type='textbox' value=restaurant.delivery_fee)
+                p Minimum order: $
+                    input#minimumOrder(type='textbox' value=restaurant.min_order)
+
+            div 
+                div(id='menu')
+                    p Menu 
+                        div(id='category')
+                            each key, value in restaurant.menu 
+                                ul(id=value) #{value}
+                                    ul#menuItems(class='menuItems') 
+                                        each category, menu in key 
+                                            li #{category.name}
+                                            p(class='ids') ID: #{menu} 
+                                            p Description: #{category.description}
+                                            p Price: $#{category.price}
+            div
+                p Add new Category: 
+                    input#addCategory(type='textbox')
+                button#addCategoryButton(type='button') Add Category
+
+            div 
+                p Fill out the information below to add a new item to the menu 
+                ul 
+                        li Name of item: 
+                            input#newName(type='textbox')
+                        br
+                        li Description:  
+                            input#newDescription(type='textbox')
+                        br
+                        li Price:        
+                            input#newPrice(type='textbox')
+                        br
+                        li Category:     
+                            select#newCategory
+                                each key, value in restaurant.menu 
+                                    option #{value}
+                        br
+                        button#saveMenuItem(type='button') Save menu item
+                        br
+        button#saveInfo(type='button') Save updated info 
+
+        script(src='/views/restaurant.js')
+                    
+

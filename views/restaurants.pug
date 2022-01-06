@@ -1,0 +1,9 @@
+html 
+    include header.pug 
+    br
+    br
+    br
+    div 
+        each restaurant in restaurants  
+            a(href='/restaurants/'+restaurant.id) #{restaurant.name}
+            br

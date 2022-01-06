@@ -1,0 +1,19 @@
+html
+    include header.pug 
+
+    head 
+        title New Restaurant
+    body 
+        h1 New Restaurant Form 
+
+        p Enter the following data for the new restaurant to add it to the list of restaurants 
+
+        p Name of Restaurant:     
+            input#restaurantName(type='textbox')
+        p Delivery Fee: $ 
+            input#deliveryFee(type='textbox')
+        p Minimum order: $
+            input#minimumOrder(type='textbox')
+        button#submitButton(type='button') Add Restaurant 
+
+        script(src='/views/client.js')
